@@ -10,7 +10,7 @@ CORS(app)  # Enable CORS for React frontend
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'mp3', 'wav', 'flac', 'm4a'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max
+app.config['MAX_CONTENT_LENGTH'] = 32 * 1024 * 1024  # 16MB max
 
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
