@@ -1,0 +1,16 @@
+chord-detection-app/
+├── backend/
+│   ├── app.py           # Flask/FastAPI main file
+│   ├── chord_detector.py # Core detection logic
+│   ├── requirements.txt
+│   └── tests/
+├── frontend/
+│   ├── package.json
+│   ├── src/
+│   └── public/
+├── notebooks/
+│   └── experiments.ipynb # For testing algorithms
+├── sample_audio/         # A few test files
+├── .gitignore
+├── README.md
+└── LICENSE
