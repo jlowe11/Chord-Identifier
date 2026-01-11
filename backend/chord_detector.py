@@ -8,15 +8,30 @@ from scipy.signal import medfilt
 CHORD_NAMES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
 
 # Time signature definitions
-TIME_SIGNATURES = {
-    '4/4': {'beats_per_measure': 4, 'beat_value': 4},
-    '3/4': {'beats_per_measure': 3, 'beat_value': 4},
-    '6/8': {'beats_per_measure': 6, 'beat_value': 8},
-    '2/4': {'beats_per_measure': 2, 'beat_value': 4},
-    '5/4': {'beats_per_measure': 5, 'beat_value': 4},
-    '7/8': {'beats_per_measure': 7, 'beat_value': 8},
-    '12/8': {'beats_per_measure': 12, 'beat_value': 8}
-}
+def parse_time_signature(time_signature):
+    """
+    Parse time signature string and return beats per measure
+    Handles any custom time signature like 13/8, 9/16, etc.
+    """
+    try:
+        parts = time_signature.split('/')
+        if len(parts) == 2:
+            numerator = int(parts[0])
+            denominator = int(parts[1])
+            return {
+                'beats_per_measure': numerator,
+                'beat_value': denominator,
+                'time_signature': time_signature
+            }
+    except:
+        pass
+    
+    # Default to 4/4 if parsing fails
+    return {
+        'beats_per_measure': 4,
+        'beat_value': 4,
+        'time_signature': '4/4'
+    }
 
 
 def detect_chords(audio_path, time_signature='4/4', roots_per_measure=1):
@@ -42,7 +57,7 @@ def detect_chords(audio_path, time_signature='4/4', roots_per_measure=1):
     tempo_info = estimate_tempo_and_beats(y, sr)
     
     # Calculate measures
-    time_sig = TIME_SIGNATURES.get(time_signature, TIME_SIGNATURES['4/4'])
+    time_sig = parse_time_signature(time_signature)
     beats_per_measure = time_sig['beats_per_measure']
     
     measure_info = calculate_measures(

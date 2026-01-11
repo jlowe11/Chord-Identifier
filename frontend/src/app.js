@@ -150,19 +150,46 @@ function App() {
               <div className="timing-controls">
                 <div className="control-group">
                   <label>Time Signature:</label>
-                  <select 
-                    value={timeSignature} 
-                    onChange={(e) => handleTimeSignatureChange(e.target.value)}
+                  <div className="time-signature-input">
+                    <input
+                      type="number"
+                      min="1"
+                      max="32"
+                      value={timeSignature.split('/')[0]}
+                      onChange={(e) => {
+                        const numerator = e.target.value;
+                        const denominator = timeSignature.split('/')[1];
+                        setTimeSignature(`${numerator}/${denominator}`);
+                      }}
+                      disabled={isLoading}
+                      className="time-sig-number"
+                      placeholder="4"
+                    />
+                    <span className="time-sig-slash">/</span>
+                    <input
+                      type="number"
+                      min="1"
+                      max="32"
+                      step="1"
+                      value={timeSignature.split('/')[1]}
+                      onChange={(e) => {
+                        const numerator = timeSignature.split('/')[0];
+                        const denominator = e.target.value;
+                        setTimeSignature(`${numerator}/${denominator}`);
+                      }}
+                      disabled={isLoading}
+                      className="time-sig-number"
+                      placeholder="4"
+                    />
+                  </div>
+                  <button
+                    className="apply-time-sig-btn"
+                    onClick={() => handleTimeSignatureChange(timeSignature)}
                     disabled={isLoading}
                   >
-                    <option value="4/4">4/4 (Common)</option>
-                    <option value="3/4">3/4 (Waltz)</option>
-                    <option value="6/8">6/8 (Compound)</option>
-                    <option value="2/4">2/4 (March)</option>
-                    <option value="5/4">5/4 (Irregular)</option>
-                    <option value="7/8">7/8 (Complex)</option>
-                    <option value="12/8">12/8 (Blues)</option>
-                  </select>
+                    Apply
+                  </button>
+                  <span className="time-sig-hint">e.g., 4/4, 3/4, 6/8, 7/8</span>
                 </div>
 
                 <div className="control-group">
