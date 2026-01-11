@@ -1,0 +1,157 @@
+/* src/components/ChordDisplay/ChordDisplay.css */
+.chord-display {
+  background: var(--bg-primary);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-md);
+}
+
+.chord-display h3 {
+  margin: 0 0 1.5rem 0;
+  color: var(--text-primary);
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.chord-timeline {
+  position: relative;
+  height: 120px;
+  background: var(--bg-secondary);
+  border-radius: 6px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin-bottom: 1rem;
+}
+
+.timeline-ruler {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 24px;
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.5);
+  z-index: 2;
+}
+
+.measure-marker {
+  position: absolute;
+  top: 0;
+  height: 24px;
+  padding: 0 4px;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  border-left: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.chord-track {
+  position: absolute;
+  top: 24px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+}
+
+.chord-block {
+  position: absolute;
+  height: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 4px;
+  min-width: 30px;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.chord-block:hover {
+  transform: translateY(-50%) scale(1.05);
+  z-index: 10;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chord-block.active {
+  border: 2px solid var(--primary-color);
+  z-index: 15;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+.chord-block.downbeat {
+  height: 70px;
+  font-weight: 600;
+}
+
+.chord-text {
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.downbeat-indicator {
+  color: white;
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.timeline-playhead {
+  position: absolute;
+  top: 24px;
+  bottom: 0;
+  width: 2px;
+  background: var(--error-color);
+  pointer-events: none;
+  z-index: 20;
+  box-shadow: 0 0 4px rgba(239, 68, 68, 0.5);
+}
+
+.timeline-playhead::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -3px;
+  width: 8px;
+  height: 8px;
+  background: var(--error-color);
+  border-radius: 50%;
+}
+
+.legend {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  padding-top: 0.5rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.legend-color {
+  width: 20px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+.downbeat-color {
+  background: var(--primary-color);
+}
+
+.regular-color {
+  background: var(--text-secondary);
+}

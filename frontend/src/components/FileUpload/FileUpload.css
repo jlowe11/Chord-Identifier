@@ -1,0 +1,85 @@
+/* src/components/FileUpload/FileUpload.css */
+.upload-zone {
+  border: 2px dashed var(--border-color);
+  border-radius: var(--radius);
+  padding: 3rem 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: var(--bg-primary);
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.upload-zone:hover {
+  border-color: var(--primary-color);
+  background: var(--bg-secondary);
+}
+
+.upload-zone.active {
+  border-color: var(--primary-color);
+  background: rgba(99, 102, 241, 0.05);
+  border-width: 2px;
+  border-style: solid;
+}
+
+.upload-zone.reject {
+  border-color: var(--error-color);
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.upload-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.upload-icon {
+  color: var(--primary-color);
+  opacity: 0.8;
+}
+
+.upload-icon svg {
+  width: 64px;
+  height: 64px;
+  stroke-width: 1.5;
+}
+
+.upload-text {
+  font-size: 1.125rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  margin: 0;
+}
+
+.upload-text.error {
+  color: var(--error-color);
+}
+
+.upload-subtext {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.browse-button {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.browse-button:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
